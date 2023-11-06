@@ -1,0 +1,255 @@
+name: Inspire.AI
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.2.30+31
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+  url_launcher: ^6.1.12
+  provider: ^6.0.5
+  change_app_package_name: ^1.1.0
+  google_mobile_ads: ^3.0.0
+  fluttertoast: ^8.2.2
+  http: ^1.1.0
+  path_provider: ^2.0.2
+  image_gallery_saver: ^2.0.3
+  permission_handler: ^11.0.0
+  device_info_plus: ^9.0.3
+  dio: ^5.3.3
+  lottie: ^2.6.0
+  dart_jsonwebtoken: ^2.12.0
+  shared_preferences: ^2.2.2
+  firebase_remote_config: ^4.3.2
+  get: ^4.6.6
+
+
+
+
+
+#  easy_ads_flutter: ^2.3.6
+
+
+
+
+  #  http: ^0.13.6
+  #  unity_ads_plugin: ^0.3.8
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  firebase_analytics: ^10.5.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/play_store_512-removebg.png"
+#  adaptive_icon_background: "assets/img/pic.jpg"
+#  adaptive_icon_foreground: "assets/img/pic.jpg"
+
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^2.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/img/a beautiful young.png
+    - assets/data.json
+    - assets/img/v1.jpg
+    - assets/img/img_0.png
+    - assets/img/edit.PNG
+    - assets/img/Anime.jpg
+    - assets/img/2s.png
+    - assets/img/3s.jpg
+    - assets/img/4s.jpg
+    - assets/img/5s.png
+    - assets/img/6s.jpg
+    - assets/img/7s.png
+    - assets/img/Cyberpunk.jpg
+    - assets/img/Portrait.jpg
+    - assets/img/Oil-Painting.jpg
+    - assets/img/famous building ,a woman walking.png
+    - assets/img/Cute and adorable fantasy owl,.png
+    - assets/img/black.png
+    - assets/img/ali.png
+    - assets/img/iron.png
+    - assets/img/Super car.png
+    - assets/img/baby hulk.png
+    - assets/img/Sports Bike.png
+    - assets/img/sticker.png
+    - assets/img/steampunk.png
+    - assets/img/dog.png
+    - assets/img/Baby Spiderman.png
+    - assets/img/a delicious triple.png
+    - assets/img/a kindly old mouse p.png
+    - assets/img/A menacing Terminator.png
+    - assets/img/A painting of a white house i.png
+    - assets/img/a pizza on the wooden.png
+    - assets/img/A raccoon dressed.png
+    - assets/img/a samurai ,.png
+    - assets/img/a vibrant watercolor.png
+    - assets/img/A white cat baby is.png
+    - assets/img/art by hendrik h.png
+    - assets/img/Chris Hemsworth a.png
+    - assets/img/colorful design.png
+    - assets/img/create a anime character for costa rica,.png
+    - assets/img/cute and adorable rabbit,.png
+    - assets/img/Design interiors that blend.png
+    - assets/img/European young woman,.png
+    - assets/img/famous building populated.png
+    - assets/img/girl with blonde hair,.png
+    - assets/img/Give me an upclose.png
+    - assets/img/high quality, 8K Ultra HD.png
+    - assets/img/high quality, 8K Ultra HD,.png
+    - assets/img/image9.png
+    - assets/img/jungleplantconceptartray.png
+    - assets/img/King kong Eoghaill o.png
+    - assets/img/Kingleo.png
+    - assets/img/kneeling cat knight.png
+    - assets/img/lion king age of the dragon,.png
+    - assets/img/main highway connecting with.png
+    - assets/img/manmen.png
+    - assets/img/1girlsolo.png
+    - assets/img/olpntng style, colorful rainbow.png
+    - assets/img/Photo realistic old b.png
+    - assets/img/portrait of a teacher.png
+    - assets/img/robotic girl beautiful anim.png
+    - assets/img/robotic girl security guard holding.png
+    - assets/img/sepia ink wash landscape of ancient vi.png
+    - assets/img/Space pirate leader.png
+    - assets/img/Transformer Prime.png
+    - assets/img/two eagle.png
+    - assets/img/Van Goh style p.png
+    - assets/img/view of turbulent swells.png
+    - assets/img/dice.png
+    - assets/icons/play_store_512-removebg.png
+    - assets/img/scroll.png
+    - assets/img/main1.png
+    - assets/icons/main1.png
+    - assets/img/down.png
+    - assets/img/logo.png
+    - assets/img/bg1.png
+    - assets/icons/download.png
+    - assets/img/AD.png
+    - assets/icons/play_store_512.png
+    - android/app/src/main/res/
+    - ios/Runner/Assets.xcassets/
+    - assets/img/b.jpg
+    - assets/img/c.jpg
+    - assets/img/d.jpg
+    - assets/img/a.jpg
+    - assets/img/t.png
+    - assets/img/1.png
+    - assets/img/2.jpg
+    - assets/img/3.png
+    - assets/img/4.png
+    - assets/img/5.png
+    - assets/img/6.jpg
+    - assets/img/7.png
+    - assets/img/8.png
+    - assets/img/9.png
+    - assets/img/10.png
+    - assets/img/11.jpg
+    - assets/img/12.png
+    - assets/img/13.jpg
+    - assets/img/14.jpg
+    - assets/img/15.png
+    - assets/img/16.jpg
+    - assets/img/17.png
+    - assets/img/18.jpg
+    - assets/img/19.png
+    - assets/img/20.jpg
+    - assets/img/21.png
+    - assets/img/22.jfif
+    - assets/img/23.png
+    - assets/img/24.png
+    - assets/img/25.png
+    - assets/img/26.jfif
+    - assets/img/27.jpg
+    - assets/img/28.png
+    - assets/img/29.png
+    - assets/img/30.png
+    - assets/img/31.png
+    - assets/img/32.png
+    - assets/img/33.png
+    - assets/img/34.png
+    - assets/img/35.png
+    - assets/img/36.png
+    - assets/img/37.png
+    - assets/img/38.png
+    - assets/img/39.png
+    - assets/img/40.png
+    - assets/img/21.png
+    - assets/img/raw.jpg
+    - assets/img/splash.webp
+    - assets/img/pic.jpg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+    - family: FontMain
+      fonts:
+        - asset: assets/fonts/Ubuntu-B.ttf
+
+    - family: FontRegular
+      fonts:
+        - asset: Assets/fonts/Ubuntu-R.ttf
+
+
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
