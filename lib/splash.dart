@@ -1,110 +1,95 @@
 import 'dart:async';
+
+// import 'dart:html';
 import 'dart:io';
-import 'package:Inspire.AI/inspirations.dart';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'MyScrollScreen.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'AdManager.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'animate.dart';
+
+
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'dart:async';
+import 'dart:developer' as developer;
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'main.dart';
 final Uri _url2 = Uri.parse(
     'https://sites.google.com/view/navicosoftgamesprivacy-policy/home');
+
 class SplashScreen1 extends StatefulWidget {
 
 static bool? valueServer;
+static bool? inter;
   @override
   State<SplashScreen1> createState() => _SplashScreenState();
 }
 class _SplashScreenState extends State<SplashScreen1> {
+
   final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
   @override
+
+  bool checkvisibility_bar=true;
+  int counter=0;
+  bool checkvisibility_btn=false;
+  void checkforresponse(){
+    counter++;
+     if(counter<4){
+       Timer(Duration(seconds: 2), (){
+         setState(() {
+           if(AppOpenAdManager.firstOpen){
+             checkvisibility_bar=false;
+             checkvisibility_btn=true;
+           }else{
+             checkforresponse();
+           }
+         });
+       });
+     }else{
+       checkvisibility_bar=false;
+       checkvisibility_btn=true;
+     }
+
+
+ }
+void recursivecall(){
+   Timer(Duration(seconds: 3), (){
+     setState(() {
+     if(AppOpenAdManager.firstOpen){
+       checkvisibility_bar=false;
+       checkvisibility_btn=true;
+     }else{
+      checkforresponse();
+     }
+     });
+   });
+
+  }
+
+
   void initState()   {
-    fetchRemoteConfigValues();
+
+
+    RewardedAdManager.loadInterstitialAd();
+    recursivecall();
     RewardedAdManager.createRewardedAd();
     super.initState();
-  }
-
-
-  initializeRemote() async {
-    remoteConfig.setConfigSettings(RemoteConfigSettings(
-      fetchTimeout: Duration(seconds: 15),
-      minimumFetchInterval: Duration.zero, // Disable caching
-    ));
-    // remoteConfig = await setupRemoteConfig();
-    //!- must be active firebase remote config
-    bool updated = await remoteConfig.fetchAndActivate();
-   updated =  await remoteConfig.getBool("imagine_server");
-    if (updated) {
-      // Fluttertoast.showToast(
-      //   msg: "imagine_server : $updated",
-      //   toastLength: Toast.LENGTH_SHORT, // or Toast.LENGTH_LONG
-      //   gravity: ToastGravity.BOTTOM, // Top, Center, Bottom
-      //   timeInSecForIosWeb: 1, // iOS and web specific (in seconds)
-      //   backgroundColor: Colors.black.withOpacity(0.7), // Background color
-      //   textColor: Colors.white, // Text color
-      //   fontSize: 16.0, // Font size
-      // );
-      print("found");
-      // the config has been updated, new parameter values are available.
-    } else {
-      // Fluttertoast.showToast(
-      //   msg: "imagine_server else : $updated",
-      //   toastLength: Toast.LENGTH_SHORT, // or Toast.LENGTH_LONG
-      //   gravity: ToastGravity.BOTTOM, // Top, Center, Bottom
-      //   timeInSecForIosWeb: 1, // iOS and web specific (in seconds)
-      //   backgroundColor: Colors.black.withOpacity(0.7), // Background color
-      //   textColor: Colors.white, // Text color
-      //   fontSize: 16.0, // Font size
-      // );
-      print("not print");
-      // the config values were previously updated.
-    }
-    await remoteConfig.ensureInitialized().then((value) async {
-      print("remote value -> ${await remoteConfig.getBool("imagine_server")}");
-      SplashScreen1.valueServer= updated;
-      // Fluttertoast.showToast(
-      //   msg: "imagine_server : $updated",
-      //   toastLength: Toast.LENGTH_SHORT, // or Toast.LENGTH_LONG
-      //   gravity: ToastGravity.BOTTOM, // Top, Center, Bottom
-      //   timeInSecForIosWeb: 1, // iOS and web specific (in seconds)
-      //   backgroundColor: Colors.black.withOpacity(0.7), // Background color
-      //   textColor: Colors.white, // Text color
-      //   fontSize: 16.0, // Font size
-      // );
-    });
-  }
-
-  Future<void> fetchRemoteConfigValues() async {
-
-      try {
-        // remoteConfig.fetch();
-        // remoteConfig.fetchAndActivate();
-        // SplashScreen1.valueServer = remoteConfig.getBool('imagine_server');
-        initializeRemote();
-
-    //     Fluttertoast.showToast(
-    //   msg: "imagine_server : ${SplashScreen1.valueServer}",
-    //   toastLength: Toast.LENGTH_SHORT, // or Toast.LENGTH_LONG
-    //   gravity: ToastGravity.BOTTOM, // Top, Center, Bottom
-    //   timeInSecForIosWeb: 1, // iOS and web specific (in seconds)
-    //   backgroundColor: Colors.black.withOpacity(0.7), // Background color
-    //   textColor: Colors.white, // Text color
-    //   fontSize: 16.0, // Font size
-    // );
-    //     print('Server Boolean Value: imagine_server : ${SplashScreen1.valueServer}');
-      } on Exception catch (e) {
-        print('Error fetching remote config: $e');
-      }
 
   }
+
   @override
   void dispose() {
 
     super.dispose();
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +146,7 @@ class _SplashScreenState extends State<SplashScreen1> {
                       flex: 1,
                       child: Center(
                         child: Text(
-                          'Welcome to \n  Inspire.AI ',
+                          'Welcome to \n  ADs In Flutter',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
@@ -174,7 +159,7 @@ class _SplashScreenState extends State<SplashScreen1> {
                       flex: 1,
                       child: Center(
                         child: Text(
-                          'Create art with AI ',
+                          'ADs ',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -187,45 +172,55 @@ class _SplashScreenState extends State<SplashScreen1> {
                     // Second Row (20%)
                     Expanded(
                       flex: 1,
-                      child: Container(
-                        width: double.infinity,
-                        height: double.infinity,
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: ElevatedButton(
-                          onPressed: () async {
+                      child:  Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Visibility(
+                              visible:checkvisibility_bar,
+                              child: CircularProgressIndicator(), // Display a loading indicator
+                            ),
+                            Visibility(
+                              visible: checkvisibility_btn,
+                              child: ElevatedButton(
 
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MyScrollScreen(),
+                                onPressed: () {
+
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MyScrollScreen(),
+                                    ),
+                                  );
+                                  // Add button functionality here
+                                  FirebaseAnalytics.instance.logEvent(
+                                    name: "LETS_GO_CLICKED",
+                                    parameters: {"button_name": " LETS_GO_CLICKED"},
+                                  );
+                                  // Debug log
+                                  print("Firebase Analytics event logged: LETS_GO_CLICKED");
+                                  // Your button functionality here
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Color(0xFF5BC22A),
+                                  foregroundColor: Colors.black,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  padding: EdgeInsets.symmetric(vertical: 18),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Let\'s Go',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            );
-                            // Add button functionality here
-                            FirebaseAnalytics.instance.logEvent(
-                              name: "LETS_GO_CLICKED",
-                              parameters: {"button_name": " LETS_GO_CLICKED"},
-                            );
-                            // Debug log
-                            print("Firebase Analytics event logged: LETS_GO_CLICKED");
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF5BC22A),
-                            foregroundColor: Colors.black,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
                             ),
-                            padding: EdgeInsets.symmetric(
-                                vertical: 18), // Double the vertical padding
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Let\'s Go',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
+                          ],
                         ),
                       ),
                     ),
@@ -239,7 +234,7 @@ class _SplashScreenState extends State<SplashScreen1> {
                             backgroundColor: Colors.black, // Background color
                           ),
                           onPressed: () {
-                            fetchRemoteConfigValues();
+
                             _launchUrl2();
                             // Optional: Navigate to the main screen when the button is pressed.
 
@@ -266,9 +261,7 @@ class _SplashScreenState extends State<SplashScreen1> {
   }
 }
 Future<void> _launchUrl2() async {
-  if (!await launchUrl(_url2)) {
-    throw Exception('Could not launch $_url2');
-  }
+
 }
 //Fluttertoast.showToast(
 //       msg: "Somewhere Error : ${response.statusCode}",
